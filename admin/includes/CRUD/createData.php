@@ -12,7 +12,7 @@ $uploadedFiles = array();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $files['fileInput']['name'][0] != '') {
     $fileInputs = $_FILES['fileInput'];
-    $maxFileSize = 32 * 1024 * 1024; // 2 MB in bytes
+    $maxFileSize = 3 * 1024 * 1024; // 2 MB in bytes
 
     foreach ($fileInputs['error'] as $key => $error) {
         if ($error === UPLOAD_ERR_OK) {

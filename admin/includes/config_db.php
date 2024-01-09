@@ -3,14 +3,26 @@ function getSchema()
 {
     return [
         'services' => [
-            'menuName' => 'Слайдер услуги',
+            'menuName' => 'Услуги',
             'fields' => [
                 'title' => [
-                    'name' => 'Выберите услугу',
+                    'name' => 'Заголовок услуги',
                     'element' => 'input',
-                    'type' => 'hidden',
-                    'data' => ["Лазерная эпиляция", "Шугаринг", "Восковая депиляция"],
-                    'selectOne' => true,
+                    'type' => 'text',
+                    'required' => true,
+                ],
+
+                'text' => [
+                    'name' => 'Текст услуги',
+                    'element' => 'textarea',
+                    'type' => 'text',
+                    'required' => true,
+                ],
+
+                'price' => [
+                    'name' => 'Цена услуги',
+                    'element' => 'input',
+                    'type' => 'number',
                     'required' => true,
                 ],
 
@@ -22,63 +34,112 @@ function getSchema()
                 ],
             ],
         ],
-
-        'slider' => [
-            'menuName' => 'Выпускники',
+        'pricelist' => [
+            'menuName' => 'Прайс лист',
             'fields' => [
                 'title' => [
-                    'name' => 'Имя выпускника',
+                    'name' => 'Выбор услуги',
+                    'element' => 'select',
+                    'options' => 'services',
+                    'required' => true,
+                ],
+
+                'name' => [
+                    'name' => 'Название',
                     'element' => 'input',
                     'type' => 'text',
                     'required' => true,
                 ],
-                'year' => [
-                    'name' => 'Опыт работы',
+                'type' => [
+                    'name' => 'Тип',
                     'element' => 'input',
                     'type' => 'text',
                     'required' => true,
                 ],
-                'description' => [
-                    'name' => 'Описание',
+                'price' => [
+                    'name' => 'Цена',
                     'element' => 'input',
-                    'type' => 'textarea',
+                    'type' => 'number',
                     'required' => true,
                 ],
+            ],
+        ],
+        'shares' => [
+            'menuName' => 'Акции',
+            'fields' => [
+                'title' => [
+                    'name' => 'Заголовок акции',
+                    'element' => 'input',
+                    'type' => 'text',
+                    'required' => true,
+                ],
+
+                'oldprice' => [
+                    'name' => 'Старая цена',
+                    'element' => 'input',
+                    'type' => 'number',
+                    'required' => true,
+                ],
+                'newprice' => [
+                    'name' => 'Новая цена',
+                    'element' => 'input',
+                    'type' => 'number',
+                    'required' => true,
+                ],
+
                 'img' => [
-                    'name' => 'Фото выпускника',
+                    'name' => 'Картинка акции',
                     'element' => 'input',
                     'type' => 'file',
                     'required' => true,
                 ],
             ],
         ],
+        'galery' => [
+            'menuName' => 'Фотографии',
+            'fields' => [                
+                'tags_next' => [
+                    'name' => 'Теги картинок',
+                    'element' => 'input',
+                    'type' => 'hidden',
+                    'data' => ["Эстетическая трихология", "Стрижка мужская", "Стрижка женская", "Стрижка детская", "СПА уходовые процедуры", "Окрашивание", "Биозавивка", "Патронажная услуга"],
+                    'selectOne' => true,
+                    'required' => false,
+                ],
 
-        'feed' => [
+                'img' => [
+                    'name' => 'Картинки для галереи',
+                    'element' => 'input',
+                    'type' => 'file',
+                    'required' => true,
+                ],
+            ],
+        ],
+        'comment' => [
             'menuName' => 'Отзывы',
             'fields' => [
                 'title' => [
                     'name' => 'ФИО',
                     'element' => 'input',
                     'type' => 'text',
-                   'required' => true,
+                    'required' => true,
                 ],
 
                 'text' => [
                     'name' => 'Текст отзыва',
                     'element' => 'textarea',
                     'type' => 'text',
-                   'required' => true,
+                    'required' => true,
                 ],
 
                 'img' => [
                     'name' => 'Фотография',
                     'element' => 'input',
                     'type' => 'file',
-                   'required' => true,
+                    'required' => true,
                 ],
-            ]
-        ]
+            ],
+        ],
         
-       
     ];
 }

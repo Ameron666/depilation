@@ -2,7 +2,7 @@
 session_start();
 require 'rb/rb.php';
 
-R::setup( 'mysql:host=localhost; dbname=depilation', 'root', '' );
+R::setup( 'mysql:host=localhost; dbname=haircut', 'root', '' );
 
 if (!R::testConnection()) {
     exit('Нет подключения к БД');

@@ -5,7 +5,7 @@
 
 <div class="admin_menu">
     <div class="admin_menu__logo">
-        <a href="/" target="_blank">DIA_SHUGAR</a>
+        <a href="/" target="_blank">LUXURY</a>
     </div>
     <div class="admin_menu__items">
         <ul>
