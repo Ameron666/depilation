@@ -25,7 +25,6 @@ function stringToImageArray(imageString) {
   return imageString.split(",").map((image) => image.trim());
 }
 
-//Выгрузка всех новостей в новости
 // const url_services = new URL(window.location.href);
 // const queryParams_services = url_services.searchParams;
 // const id_services = queryParams_services.get("id_services");
@@ -58,6 +57,8 @@ function stringToImageArray(imageString) {
 //   });
 // });
 
+// Услуги
+
 const url_services = new URL(window.location.href);
 const queryParams_services = url_services.searchParams;
 const id_services = queryParams_services.get("id_services");
@@ -85,7 +86,7 @@ getData("services").then((response) => {
               </div>
               <p>${element.text}</p>
               <h2>ОТ ${element.price} Р.</h2>
-              <a href="womenHaircuts.html"><button>Записаться</button></a>
+              <a href="womenHaircuts.html"><button class="service_button">Записаться</button></a>
           </div>
       </div>
     `);
@@ -94,7 +95,8 @@ getData("services").then((response) => {
   });
 });
 
-//Редактирование новости
+// Страница услуги
+
 if (id_services) {
   getData("services", id_services, "admin").then((response) => {
     var service_title = response[1];
@@ -137,6 +139,8 @@ if (id_services) {
   });
 }
 
+// Акции
+
 getData("shares").then((response) => {
   let block = $("#shares_main").empty();
   response.forEach((element) => {
@@ -145,11 +149,13 @@ getData("shares").then((response) => {
         <img src="admin/img/${stringToImageArray(element.img)}" alt="">
         <h2><span>${element.oldprice} Р.</span> ${element.newprice} Р.</h2>
         <p> ${element.title} </p>
-        <button>Подробнее</button>
+        <button class="service_button">Подробнее</button>
         </div>
         `);
   });
 });
+
+// Фотографии на главную
 
 getData("galery").then((response) => {
   let block = $(".galery_imgs__main").empty();
@@ -164,6 +170,8 @@ getData("galery").then((response) => {
   });
 });
 
+// Фотографии на страницу фотографий
+
 getData("galery").then((response) => {
   let block = $(".galery_imgs__full").empty();
   response.forEach((element) => {
@@ -177,20 +185,96 @@ getData("galery").then((response) => {
   });
 });
 
+// Ограничение количества отображаемых картинок (необходима доработка)
+
+// getData("galery").then((response) => {
+//   let itemsToShow = 6;
+//   let totalImages = getTotalImageCount(response);
+//   console.log(totalImages);
+
+//   showItemsGalery(response, itemsToShow);
+
+//   $(".imgCont").after('<button id="showMoreBtnGalery">Показать ещё</button>');
+//   const $showMoreBtnGalery = $("#showMoreBtnGalery");
+//   const $imgContainer = $(".galery_imgs__full");
+//   let currentItemsShown = itemsToShow;
+
+//   $showMoreBtnGalery.click(function () {
+//     currentItemsShown += itemsToShow;
+//     showItemsGalery(response, currentItemsShown);
+//     if (currentItemsShown >= totalImages) {
+//       $showMoreBtnGalery.hide();
+//     }
+//   });
+// });
+
+// function showItemsGalery(data, count) {
+//   let block = $(".galery_imgs__full").empty();
+//   let totalShown = 0;
+
+//   for (let i = 0; i < data.length && totalShown < count; i++) {
+//     const element = data[i];
+//     const imagesToShow = stringToImageArray(element.img);
+//     const remainingCount = count - totalShown;
+//     const shownImages = imagesToShow.slice(0, remainingCount);
+
+//     for (let j = 0; j < shownImages.length; j++) {
+//       block.append(`
+//         <div class="galery_imgs__img item" data_tag="${element.tags_next}">
+//           <img src="admin/img/${shownImages[j]}" alt="">
+//         </div>
+//       `);
+//       totalShown++;
+//     }
+//   }
+// }
+
+// function getTotalImageCount(data) {
+//   let total = 0;
+//   for (let i = 0; i < data.length; i++) {
+//     total += stringToImageArray(data[i].img).length;
+//   }
+//   return total;
+// }
+
+// ----------------------------------------------------------------
+
+// Коментарии на страницу коментариев
+
 getData("comment").then((response) => {
-  let block = $(".feedback-box").empty();
-  response.forEach((element) => {
-    block.append(`
-        <div class="card">
-            <img src="admin/img/${stringToImageArray(element.img)[0]}" alt="">
-            <h2>${element.title}</h2>
-            
-                ${element.text}
-            
-        </div>
-    `);
+  let itemsToShow = 6;
+  let totalItems = 0;
+  totalItems = response.length;
+
+  showItemsComment(response, itemsToShow);
+
+  $(".feedback-box").after(
+    '<button id="showMoreBtnComment">Показать ещё</button>'
+  );
+
+  $("#showMoreBtnComment").click(function () {
+    itemsToShow += 6;
+    showItemsComment(response, itemsToShow);
+    if (itemsToShow >= totalItems) {
+      $("#showMoreBtnComment").hide();
+    }
   });
 });
+
+function showItemsComment(data, count) {
+  let block = $(".feedback-box").empty();
+  data.slice(0, count).forEach((element) => {
+    block.append(`
+      <div class="card">
+        <img src="admin/img/${stringToImageArray(element.img)[0]}" alt="">
+        <h2>${element.title}</h2>
+        <div class="card_text">${element.text}</div>
+      </div>
+    `);
+  });
+}
+
+// Коментарии на главную
 
 getData("comment").then((response) => {
   const maxItemsToShow = 3;
@@ -201,133 +285,10 @@ getData("comment").then((response) => {
         <div class="card">
             <img src="admin/img/${stringToImageArray(element.img)[0]}" alt="">
             <h2>${element.title}</h2>
-                ${element.text}
+            <div class="card_text">${element.text}</div>
         </div>
     `);
   });
 });
 
 //
-
-// export async function getGaleryData() {
-//     const response = await getData("galery");
-//     return response;
-//   }
-
-//   export function displayImagesByTags(images, selectedTags) {
-//     let block = $(".galery_imgs").empty();
-
-//     images.forEach((element) => {
-//       const imageTags = element.tags_next.split(",");
-//       const hasSelectedTags = selectedTags.every(tag => imageTags.includes(tag));
-
-//       if (hasSelectedTags || selectedTags.length === 0) {
-//         block.append(`
-//           <div class="galery_imgs__img">
-//             <img src="admin/img/${stringToImageArray(element.img)[0]}" alt="">
-//           </div>
-//         `);
-//       }
-//     });
-//   }
-
-//Выгрузка всех новостей на главную
-// getData("news").then((response) => {
-//   let block = $("#news_show_main_page").empty();
-//   const maxCharacters = 100;
-
-//   let value = 6;
-//   let length = response.length;
-
-//   if (value > length) {
-//     value = length;
-//   }
-
-//   for (let i = 0; i < value; i++) {
-//     block.append(`
-//             <div class="events_block">
-//                 <div class="events_block__top">
-//                     <img src="admin/img/${
-//                       stringToImageArray(response[i].img)[0]
-//                     }" alt="" />
-//                 </div>
-//                 <div class="events_block__bottom">
-//                 <div class="events_block__bottom___line">
-//                     <img src="img/forEvent.png" alt="" />
-//                 </div>
-//                 <div class="events_block__bottom___title">
-//                     ${response[i].title.slice(0, maxCharacters)}...
-//                 </div>
-//                 <div class="events_block__bottom___dops">
-//                     <div class="events_block__bottom___dops____date">${
-//                       response[i].date
-//                     }</div>
-//                     <a href="new.html?id_new=${
-//                       response[i].id
-//                     }" class="events_block__bottom___dops____readMore">
-//                         Читать дальше >>
-//                     </a>
-//                 </div>
-//                 </div>
-//             </div>
-//         `);
-//   }
-// });
-
-// ---------------------------------------------------------
-
-//выгрузка всех слайдов в слайдер
-// $(document).ready(function () {
-//   getData("slider").then((response) => {
-//     let slides = "";
-//     response.forEach((element) => {
-//       slides += `
-//                     <div class="swiper-slide slider">
-//                         <div class="slider_left">
-//                             <img src="admin/img/${
-//                               stringToImageArray(element.img)[0]
-//                             }" alt="" />
-//                         </div>
-//                         <div class="slider_right">
-//                             <p class="slider_right__title">
-//                                 ${element.title}
-//                             </p>
-//                             <p class="slider_right__desc">
-//                                 ${element.text}
-//                             </p>
-//                             <a href="${
-//                               element.link
-//                             }" class="slider_right__button">Узнать больше</a>
-//                         </div>
-//                     </div>
-//                 `;
-//     });
-
-//     const swiperHtml = `
-//                 <swiper class="mySwiper" pagination="true">
-//                     <div class="swiper-wrapper">
-//                         ${slides}
-//                     </div>
-//                     <div class="swiper-pagination"></div>
-//                 </swiper>
-//             `;
-
-//     $("#slider_all_show").html(swiperHtml);
-
-//     if ($("#slider_all_show").length) {
-//       const swiper = new Swiper(".mySwiper", {
-//         // Опциональные параметры
-//         direction: "horizontal",
-//         loop: true,
-//         pagination: {
-//           el: ".swiper-pagination",
-//         },
-//         autoplay: {
-//           delay: 5000,
-//         },
-//       });
-//     }
-//   });
-// });
-
-// ---------------------------------------------------------

@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-top: 20px;
   }
 
   .about-title {
@@ -11,11 +12,11 @@
   }
 
   .about-title_name {
-    font-size: 70px;
+    font-size: 30px;
   }
 
   .mainBlock_container {
-    padding: 30px 0;
+    padding: 0;
   }
 
   .about-text {
@@ -25,12 +26,17 @@
 
   .about-text p {
     width: 100%;
+    font-size: 14px;
   }
 
   .about-img {
-    width: 95%;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 100%;
+    padding: 0 10px;
+    height: 300px;
+  }
+
+  .info-service h2 {
+    font-size: 24px;
   }
 
   .info_service_img {
@@ -39,14 +45,24 @@
 
   .info_service_img img {
     width: 100%;
+    height: 350px;
   }
 
   .about-title_line4 {
     display: none;
   }
 
+  .galery_imgs {
+    padding: 0 10px;
+  }
+
   .galery_imgs__img {
-    width: 100%;
+    width: 46%;
+    height: 150px;
+  }
+
+  .row_seeMore {
+    margin-top: 10px;
   }
 
   .action-box {
@@ -61,12 +77,41 @@
     width: 100%;
     border: none;
     flex-direction: column;
+    padding-bottom: 10px;
   }
 
   .bottomMenu nav ul {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+  }
+
+  .bottomMenu nav ul li {
+    font-size: 16px;
+  }
+
+  .phoneInfo {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .phoneInfo p:nth-child(1),
+  .phoneInfo p:nth-child(2) {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .info_text {
+    gap: 10px;
+  }
+
+  .info p {
+    font-size: 16px;
+  }
+
+  .icon a {
+    transform: scale(0.8);
   }
 
   .shares-card {
@@ -94,10 +139,12 @@
   .services-box {
     gap: 0;
     width: 100%;
+    margin-top: 20px;
   }
 
   .services nav {
     flex-direction: row;
+    justify-content: flex-start;
     padding: 0;
     border: none;
   }
@@ -129,12 +176,22 @@
     padding: 0 5px;
   }
 
-  .mainPageNav nav ul li a {
-    font-size: 20px;
+  .navbar-box nav ul li a {
+    font-size: 16px;
   }
 
   .info-service {
     padding: 0;
+    justify-content: baseline;
+    gap: 10px;
+  }
+  
+  .tab-content .info-service {
+    margin-top: 20px;
+  }
+
+  .info-service p {
+    font-size: 16px;
   }
 
   .navbar-box {
@@ -157,6 +214,10 @@
     justify-content: center;
   }
 
+  .services nav ul li a {
+    font-size: 18px;
+  }
+
   .service-block {
     flex-direction: column;
     width: 100%;
@@ -166,7 +227,7 @@
 
   .container {
     gap: 0;
-    padding-top: 5px;
+    padding: 0 10px;
   }
 
   .container h1 {
@@ -178,12 +239,13 @@
   }
 
   .text-service {
+    width: 100%;
     gap: 10px;
   }
 
   .img_service {
     width: 100%;
-    padding: 0 10px;
+    padding: 0;
     height: auto;
   }
 
@@ -199,9 +261,18 @@
     height: auto;
   }
 
+  .filter-box {
+    gap: 0;
+  }
+
   .filter-box ul {
-    gap: 10px;
+    gap: 0;
     flex-direction: column;
+  }
+
+  .filter-box ul li {
+    font-size: 16px;
+    padding: 5px 20px;
   }
 
   .card-list {
@@ -211,9 +282,128 @@
   }
 
   .card {
-    margin: 0 20px;
+    margin: 0 10px;
     min-width: 200px;
     width: 100%;
+    height: 300px;
+    padding: 20px 20px 40px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+  }
+
+  .card p,
+  .card div {
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .services nav ul {
+    gap: 10px;
+  }
+
+  .centerLogo_img {
+    padding: 0;
+    border: none;
+    background: none;
+    transform: scale(0.8);
+  }
+
+  .centerLogo .text {
+    padding: 0;
+    border: none;
+    margin: 0;
+  }
+
+  .closeBlock {
+    display: none;
+  }
+
+  .aboutService {
+    width: 100%;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+  }
+
+  .aboutService_left__title {
+    font-size: 16px;
+  }
+
+  .container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .price-list {
+    width: 100%;
+  }
+
+  .examplesService {
+    width: 100%;
+  }
+
+  .aboutService_right__img {
+    width: 100%;
+  }
+
+  .aboutService_right__img img {
+    object-fit: contain;
+  }
+
+  .aboutService_left {
+    gap: 10px;
+  }
+
+  .aboutService_left__text {
+    font-size: 14px;
+  }
+
+  .examplesTitle {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+
+  .price-list ul li {
+    padding: 0 10px;
+  }
+
+  .examplesService_img {
+    width: 100%;
+  }
+
+  .aboutService_left a button {
+  }
+
+  .row_seeMore__btn,
+  .service_button,
+  .text-service button,
+  #showMoreBtnComment {
+    width: 100%;
+  }
+
+  #services {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .feedback-box {
+    /* padding: 0 10px; */
+  }
+
+  .filter_box_desktop {
+    display: none;
+  }
+
+  .filter_box_adapt {
+    display: flex;
   }
 }
 
@@ -359,7 +549,7 @@
     padding: 0 5px;
   }
 
-  .mainPageNav nav ul li a {
+  .navbar-box nav ul li a {
     font-size: 20px;
   }
 
@@ -456,6 +646,10 @@
     font-size: 16px;
   }
 
+  .services nav ul {
+    gap: 15px;
+  }
+
   .services nav ul li {
     gap: 30px;
   }
@@ -468,12 +662,15 @@
   .services nav {
     padding-top: 30px;
   }
+
   .feedback-box {
     justify-content: flex-start;
   }
+
   .imgCont {
     /* justify-content: flex-start; */
   }
+
   .card-list {
     padding: 10px 20px;
     width: 100%;
