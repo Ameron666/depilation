@@ -33,6 +33,17 @@ $(document).ready(function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownLinks = document.querySelectorAll('.dropdown-link');
+
+  dropdownLinks.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const dropdownMenu = this.nextElementSibling;
+          dropdownMenu.classList.toggle('show');
+      });
+  });
+});
 
 
 // $(".filter-box .dropdown-content").on("click", "li", function () {

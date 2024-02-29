@@ -86,7 +86,7 @@ getData("services").then((response) => {
               </div>
               <p>${element.text}</p>
               <h2>ОТ ${element.price} Р.</h2>
-              <a href="womenHaircuts.html"><button class="service_button">Записаться</button></a>
+              <a href="womenHaircuts.html?id_services=${element.id}"><button class="service_button">Записаться</button></a>
           </div>
       </div>
     `);
