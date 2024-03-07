@@ -1364,6 +1364,15 @@ button:hover {
   gap: 20px !important;
 }
 
+.dropdown-menu li {
+  padding-left: 20px;
+}
+
 .show {
   display: flex !important;
 }
+
+.navigation_menu__shares {
+  display: none;
+}
+

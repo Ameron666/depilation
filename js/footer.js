@@ -4,10 +4,10 @@ footer.append(`
 <div class="bottomMenu">
 <nav>
     <ul>
-        <li><a href="service.html">Услуги</a></li>
-        <li><a href="shares.html">Акции</a></li>
-        <li><a href="galery.html">Галерея</a></li>
-        <li><a href="feedback.html">Отзывы</a></li>
+        <li class="navigation_menu__service"><a href="service.html">Услуги</a></li>
+        <li class="navigation_menu__shares"><a href="shares.html">Акции</a></li>
+        <li class="navigation_menu__galery"><a href="galery.html">Галерея</a></li>
+        <li class="navigation_menu__feedback"><a href="feedback.html">Отзывы</a></li>
     </ul>
     <div class="phoneInfo">
         <a href="tel:+79294444229"><p>8 (929) 444-42-29</p></a>

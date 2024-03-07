@@ -66,11 +66,11 @@ getData("services").then((response) => {
   let block = $("#services").empty();
   let isEven = true; // Переменная для отслеживания четности/нечетности блока
 
-  response.forEach((element) => {
+  response.forEach((element, index) => {
     // Определите классы и порядок отображения на основе четности/нечетности
     const imgClass = isEven ? "rightRadius" : "leftRadius";
     const rowClass = isEven ? "row_reverse" : "row_block";
-    const titleNumber = String(element.id).padStart(2, "0"); // Преобразование числа в формат "01"
+    const titleNumber = String(index + 1).padStart(2, "0"); // Преобразование числа в формат "01"
 
     block.append(`
       <div class="service-block ${rowClass}">
@@ -86,7 +86,9 @@ getData("services").then((response) => {
               </div>
               <p>${element.text}</p>
               <h2>ОТ ${element.price} Р.</h2>
-              <a href="womenHaircuts.html?id_services=${element.id}"><button class="service_button">Записаться</button></a>
+              <a href="womenHaircuts.html?id_services=${
+                element.id
+              }"><button class="service_button">Записаться</button></a>
           </div>
       </div>
     `);
@@ -100,7 +102,7 @@ getData("services").then((response) => {
 if (id_services) {
   getData("services", id_services, "admin").then((response) => {
     var service_title = response[1];
-    console.log(service_title);
+    // console.log(service_title);
     $(".aboutService_left__title").text(response[1]);
     $(".aboutService_left__text").html(response[2]);
     $(".aboutService_right").html(`
@@ -120,11 +122,12 @@ if (id_services) {
 
     `);
     }
+
     getData("pricelist").then((response) => {
+      let block = $("#this_service_price").empty();
       for (let i = 0; i < response.length; i++) {
         if (response[i].title === service_title) {
-          console.log(response[i], service_title);
-          $("#this_service_price").append(`
+          block.append(`
                <li>
                     <div>
                         <p>${response[i].name}</p>
@@ -133,6 +136,8 @@ if (id_services) {
                     <h2>${response[i].price} Р.</h2>
                 </li>
             `);
+        } else {
+          $(".price-list").empty();
         }
       }
     });
@@ -143,8 +148,9 @@ if (id_services) {
 
 getData("shares").then((response) => {
   let block = $("#shares_main").empty();
-  response.forEach((element) => {
-    block.append(`
+  if (response.length > 0) {
+    response.forEach((element) => {
+      block.append(`
         <div class="shares-card">
         <img src="admin/img/${stringToImageArray(element.img)}" alt="">
         <h2><span>${element.oldprice} Р.</span> ${element.newprice} Р.</h2>
@@ -152,7 +158,10 @@ getData("shares").then((response) => {
         <button class="service_button">Подробнее</button>
         </div>
         `);
-  });
+    });
+  } else {
+    $(".shares_section").empty();
+  }
 });
 
 // Фотографии на главную
@@ -280,15 +289,19 @@ getData("comment").then((response) => {
   const maxItemsToShow = 3;
   let block = $(".card-list").empty();
   // response.forEach((element) => {
-  response.slice(0, maxItemsToShow).forEach((element) => {
-    block.append(`
+  if (response.length > 0) {
+    response.slice(0, maxItemsToShow).forEach((element) => {
+      block.append(`
         <div class="card">
             <img src="admin/img/${stringToImageArray(element.img)[0]}" alt="">
             <h2>${element.title}</h2>
             <div class="card_text">${element.text}</div>
         </div>
     `);
-  });
+    });
+  } else {
+    $(".feedback_section").empty();
+  }
 });
 
 //

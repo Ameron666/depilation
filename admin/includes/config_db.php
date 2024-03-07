@@ -34,6 +34,7 @@ function getSchema()
                 ],
             ],
         ],
+
         'pricelist' => [
             'menuName' => 'Прайс лист',
             'fields' => [
@@ -43,19 +44,18 @@ function getSchema()
                     'options' => 'services',
                     'required' => true,
                 ],
-
                 'name' => [
                     'name' => 'Название',
                     'element' => 'input',
                     'type' => 'text',
                     'required' => true,
                 ],
-                'type' => [
-                    'name' => 'Тип',
-                    'element' => 'input',
-                    'type' => 'text',
-                    'required' => true,
-                ],
+                // 'type' => [
+                //     'name' => 'Тип',
+                //     'element' => 'input',
+                //     'type' => 'text',
+                //     'required' => true,
+                // ],
                 'price' => [
                     'name' => 'Цена',
                     'element' => 'input',
@@ -64,6 +64,7 @@ function getSchema()
                 ],
             ],
         ],
+
         'shares' => [
             'menuName' => 'Акции',
             'fields' => [
@@ -95,6 +96,7 @@ function getSchema()
                 ],
             ],
         ],
+
         'galery' => [
             'menuName' => 'Фотографии',
             'fields' => [                
@@ -115,6 +117,7 @@ function getSchema()
                 ],
             ],
         ],
+
         'comment' => [
             'menuName' => 'Отзывы',
             'fields' => [
